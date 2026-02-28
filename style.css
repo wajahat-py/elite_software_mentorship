@@ -1,0 +1,1193 @@
+/* =========================================================================
+   Apple/Stripe/Vercel-inspired Premium Design
+   Using PDF Colors: Teal, Purple, Bright Green, Coral Red.
+   ========================================================================= */
+
+:root {
+    /* Brand Colors (from PDF) */
+    --teal: #268596;
+    --teal-light: #2b98ab;
+    --purple: #8a7098;
+    --purple-light: rgba(138, 112, 152, 0.1);
+    --green-bright: #00c061;
+    --red-coral: #ff5454;
+
+    /* Layout Colors */
+    --bg-main: #ffffff;
+    --bg-card: #ffffff;
+    --text-hero: #2d3748;
+    --text-body: #4a5568;
+    --text-muted: #718096;
+    --border-subtle: rgba(0, 0, 0, 0.08);
+
+    /* Typography */
+    --font-family: 'Poppins', sans-serif;
+
+    /* Soft Elevation Shadows */
+    --shadow-flat: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.12);
+
+    /* Layout constraints */
+    --max-width: 1000px;
+    --radius-pill: 40px;
+    --radius-card: 16px;
+    --radius-big: 24px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-body);
+    background-color: var(--bg-main);
+    line-height: 1.5;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.015em;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* =========================================================================
+   Typography
+   ========================================================================= */
+h1,
+h2,
+h3,
+h4 {
+    color: var(--text-hero);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 2.75rem;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    line-height: 1.25;
+}
+
+/* In-text Highlights */
+.highlight-text {
+    font-weight: 700;
+}
+
+.teal {
+    color: var(--teal);
+}
+
+.purple {
+    color: var(--purple);
+}
+
+.bg-purple-light {
+    background-color: var(--purple-light);
+    padding: 4px 12px;
+    border-radius: 8px;
+}
+
+/* Utilities */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+}
+
+.section {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0;
+    /* Ensures content doesn't hit the screen edges on small devices */
+}
+
+.bg-card {
+    background-color: var(--bg-card);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+/* Decorators (Geometric shapes matching PDF) */
+.decor-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.shape-dots {
+    position: absolute;
+    width: 96px;
+    /* 4 cols of 24 */
+    height: 96px;
+    /* 4 rows of 24 */
+    background-image: radial-gradient(var(--teal) 2.5px, transparent 2.5px);
+    background-size: 24px 24px;
+}
+
+.shape-dots.tr {
+    top: 40px;
+    right: 40px;
+}
+
+.shape-dots.bl {
+    bottom: 40px;
+    left: 40px;
+}
+
+.shape-dots.tl {
+    top: 40px;
+    left: 40px;
+}
+
+.shape-circles {
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid var(--teal);
+}
+
+/* Concentric 3 rings */
+.shape-circles::before,
+.shape-circles::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid var(--teal);
+}
+
+.shape-circles::before {
+    top: 21px;
+    left: 21px;
+    right: 21px;
+    bottom: 21px;
+}
+
+.shape-circles::after {
+    top: 45px;
+    left: 45px;
+    right: 45px;
+    bottom: 45px;
+}
+
+.shape-circles.right-edge {
+    width: 300px;
+    height: 300px;
+    right: -150px;
+    top: 20%;
+}
+
+.shape-circles.top-left {
+    width: 250px;
+    height: 250px;
+    left: -125px;
+    top: -125px;
+}
+
+.shape-solid-circle {
+    position: absolute;
+    background: var(--teal);
+    border-radius: 50%;
+}
+
+.shape-solid-circle.br {
+    width: 400px;
+    height: 400px;
+    right: -150px;
+    bottom: -200px;
+}
+
+.shape-ring-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 40px solid var(--teal);
+}
+
+.shape-ring-circle.br {
+    width: 400px;
+    height: 400px;
+    right: -150px;
+    bottom: -200px;
+}
+
+/* =========================================================================
+   Navigation
+   ========================================================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(251, 251, 253, 0.8);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--border-subtle);
+    z-index: 1000;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+}
+
+.logo {
+    font-weight: 700;
+    color: var(--text-hero);
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+}
+
+/* =========================================================================
+   Buttons
+   ========================================================================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    border: none;
+    font-family: inherit;
+}
+
+.btn-nav {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: var(--text-hero);
+    color: #fff;
+}
+
+.btn-nav:hover {
+    background: #000;
+    transform: scale(1.02);
+}
+
+.btn-teal {
+    background: var(--teal);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(29, 129, 151, 0.4);
+}
+
+.btn-teal:hover {
+    background: var(--teal-light);
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(29, 129, 151, 0.5);
+}
+
+.btn-large {
+    padding: 20px 48px;
+    font-size: 1.2rem;
+    border-radius: var(--radius-pill);
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* =========================================================================
+   1. Hero Section
+   ========================================================================= */
+.hero {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 64px;
+    padding-bottom: 0;
+}
+
+.hero-title {
+    margin-bottom: 24px;
+}
+
+.hero-subtitle {
+    font-size: 1.75rem;
+    color: var(--purple);
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+.hero-subtitle-light {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.hero-supporting {
+    font-size: 1.5rem;
+    max-width: 680px;
+    margin: 0 0 48px 0;
+    color: var(--text-body);
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+/* =========================================================================
+   2. Transformation Section
+   ========================================================================= */
+.transformation-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 64px auto 0;
+    max-width: 640px;
+}
+
+.premium-card {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.premium-card:hover {
+    box-shadow: none;
+    transform: none;
+}
+
+.icon-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    /* Using drop-shadow for the starburst effect visually if a star shape isn't straightforward without SVG, but we use a solid circle here */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-right: 20px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+/* Starburst shape illusion using a star polygon or just overlapping rotated squares */
+.icon-circle.starburst {
+    border-radius: 0;
+    background: transparent !important;
+}
+
+.icon-circle.starburst::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    border-radius: 12px;
+    transform: rotate(0deg);
+    z-index: -1;
+}
+
+.icon-circle.starburst::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    border-radius: 12px;
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+.card-text-container {
+    flex-grow: 1;
+    border-radius: 16px;
+    padding: 20px 32px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.15rem;
+    text-align: center;
+    box-shadow: var(--shadow-flat);
+}
+
+.bg-green .icon-circle::before,
+.bg-green .icon-circle::after,
+.bg-green.card-text-container {
+    background-color: var(--green-bright);
+}
+
+.bg-teal .icon-circle::before,
+.bg-teal .icon-circle::after,
+.bg-teal.card-text-container {
+    background-color: var(--teal);
+}
+
+.bg-green {
+    background-color: var(--green-bright);
+}
+
+.bg-teal {
+    background-color: var(--teal);
+}
+
+.bg-purple {
+    background-color: var(--purple);
+}
+
+.card-text {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+}
+
+.section-conclusion {
+    margin-top: 80px;
+}
+
+.conclusion-text {
+    font-size: 1.3rem;
+    color: var(--text-hero);
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* =========================================================================
+   3. The Problem Section
+   ========================================================================= */
+.problem-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin: 80px auto;
+    max-width: 800px;
+    align-items: stretch;
+}
+
+.problem-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.col-title {
+    font-size: 1.75rem;
+    margin-bottom: 32px;
+    color: var(--text-hero);
+}
+
+.stack-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    gap: 16px;
+    flex-grow: 1;
+}
+
+.pill-card {
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.red-card {
+    background: var(--red-coral);
+}
+
+.green-card {
+    background: var(--green-bright);
+}
+
+.pill-icon {
+    display: none;
+}
+
+/* =========================================================================
+   4. Projects Section
+   ========================================================================= */
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-top: 80px;
+}
+
+.premium-project-card {
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    transition: transform 0.3s;
+    margin-bottom: 24px;
+}
+
+.premium-project-card:hover {
+    transform: translateY(-4px);
+}
+
+.main-project {
+    background: transparent;
+    border: none;
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    background: var(--teal);
+    border-radius: 16px;
+    padding: 16px 32px;
+    color: white;
+    max-width: 600px;
+}
+
+.project-num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-right: 24px;
+    flex-shrink: 0;
+    color: white;
+}
+
+.project-name {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.project-desc {
+    font-size: 1.25rem;
+    margin-bottom: 32px;
+    max-width: 600px;
+}
+
+.skills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.skill-tag {
+    padding: 8px 20px;
+    border-radius: 20px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.skill-item {
+    background: var(--green-bright);
+    opacity: 0.9;
+}
+
+/* =========================================================================
+   5. Overview Grid
+   ========================================================================= */
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin: 80px auto;
+}
+
+.overview-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    padding: 40px 24px;
+    box-shadow: var(--shadow-flat);
+    text-align: center;
+}
+
+.icon-huge {
+    font-size: 3rem;
+    margin-bottom: 24px;
+}
+
+.overview-title {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+.overview-detail {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-hero);
+}
+
+.bold-warning {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--red-coral);
+    margin-top: 16px;
+}
+
+/* =========================================================================
+   8. Mentor
+   ========================================================================= */
+.mentor-premium-box {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 48px;
+    align-items: flex-start;
+}
+
+.mentor-bio {
+    font-size: 1.25rem;
+    margin-bottom: 32px;
+    line-height: 1.8;
+}
+
+.mentor-profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.mentor-image-container {
+    display: flex;
+    justify-content: center;
+    width: 160px;
+    /* Match the image width on desktop */
+    margin-bottom: 12px;
+}
+
+.mentor-name {
+    width: 160px;
+    /* Match the image width */
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.mentor-image {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 8px solid var(--teal);
+    margin-bottom: 0;
+    box-shadow: var(--shadow-hover);
+}
+
+.mentor-quote-card {
+    background: var(--purple);
+    color: #fff;
+    padding: 40px;
+    border-radius: var(--radius-card);
+    position: relative;
+    box-shadow: 0 20px 40px rgba(140, 119, 171, 0.3);
+}
+
+.quote-mark {
+    font-size: 6rem;
+    line-height: 0;
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    opacity: 0.2;
+    font-family: serif;
+}
+
+.quote-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+    margin-top: 20px;
+}
+
+/* =========================================================================
+   9. Investment & Application
+   ========================================================================= */
+.pricing-premium-card {
+    max-width: 540px;
+    margin: 64px auto 0;
+    background: var(--bg-card);
+    border-radius: var(--radius-big);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border: 2px solid var(--teal);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+.pricing-premium-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(29, 129, 151, 0.15);
+}
+
+.price-header {
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 56px 40px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+    color: white;
+}
+
+.price-big {
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1;
+    margin-bottom: 12px;
+    letter-spacing: -0.05em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.price-sub {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.price-body {
+    padding: 48px;
+    background: var(--bg-card);
+}
+
+.included-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--teal);
+    margin-bottom: 24px;
+}
+
+.check-list {
+    list-style: none;
+    margin: 0;
+}
+
+.check-list li {
+    position: relative;
+    padding-left: 36px;
+    margin-bottom: 20px;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--text-hero);
+}
+
+.check-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 20px;
+    height: 20px;
+    background: var(--green-bright);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 0 4px #fff, 0 0 0 2px var(--green-bright);
+}
+
+.price-footer {
+    padding: 0 48px 48px;
+}
+
+.scarcity {
+    text-align: center;
+    font-weight: 600;
+    color: var(--red-coral);
+    margin-bottom: 24px;
+    background: rgba(254, 87, 87, 0.1);
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+}
+
+/* =========================================================================
+   FAQ
+   ========================================================================= */
+.faq-container {
+    max-width: 800px;
+    margin: 80px auto 0;
+}
+
+.faq-item {
+    background: var(--bg-main);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+}
+
+.faq-item:hover {
+    box-shadow: var(--shadow-flat);
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px;
+    cursor: pointer;
+}
+
+.faq-question h3 {
+    font-size: 1.25rem;
+    margin: 0;
+    color: var(--text-hero);
+}
+
+.faq-icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+    content: '';
+    position: absolute;
+    background: var(--text-muted);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.faq-icon::before {
+    top: 11px;
+    left: 0;
+    width: 24px;
+    height: 2px;
+}
+
+.faq-icon::after {
+    top: 0;
+    left: 11px;
+    width: 2px;
+    height: 24px;
+}
+
+.faq-item.active .faq-icon::after {
+    transform: rotate(90deg);
+    opacity: 0;
+}
+
+.faq-item.active .faq-icon::before {
+    transform: rotate(180deg);
+    opacity: 0.5;
+}
+
+.faq-answer {
+    max-height: 0;
+    opacity: 0;
+    padding: 0 32px;
+    transition: all 0.3s ease-in-out;
+}
+
+.faq-answer p {
+    color: var(--text-body);
+    font-size: 1.15rem;
+    margin-bottom: 32px;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px;
+    opacity: 1;
+}
+
+/* =========================================================================
+   Footer
+   ========================================================================= */
+.footer {
+    padding: 64px 0;
+    color: var(--text-muted);
+    font-weight: 500;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.footer-sub {
+    font-size: 0.9rem;
+    margin-top: 8px;
+    opacity: 0.7;
+}
+
+/* =========================================================================
+   Animations & Responsive
+   ========================================================================= */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+    /* .hero padding overrides removed, now using flex centering */
+
+    .decor-container {
+        display: none;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    h1 {
+        font-size: 3.25rem;
+    }
+
+    h2 {
+        font-size: 2.25rem;
+    }
+
+    .hero-supporting {
+        font-size: 1.25rem;
+    }
+
+    .section {
+        min-height: auto;
+        padding: 100px 0;
+    }
+
+    .hero,
+    .transformation {
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 64px;
+        padding-bottom: 0px;
+    }
+
+    .transformation-grid,
+    .problem-split,
+    .mentor-premium-box {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .overview-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .mentor-quote-card {
+        margin-top: 0;
+        padding: 32px;
+    }
+
+    .quote-mark {
+        top: 20px;
+        font-size: 5rem;
+    }
+
+    .mentor-image {
+        width: 120px;
+        height: 120px;
+        border-width: 4px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+        margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        margin-bottom: 16px;
+    }
+
+    .hero-supporting {
+        font-size: 1.1rem;
+        margin-bottom: 32px;
+    }
+
+    .section {
+        padding: 80px 0;
+    }
+
+    .hero,
+    .transformation {
+        min-height: 100dvh;
+        padding-top: 64px;
+        padding-bottom: 0px;
+    }
+
+    .mentor-image-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 24px;
+    }
+
+    .mentor-image {
+        width: 65%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        border-width: 3px;
+        margin-bottom: 0;
+    }
+
+    .mentor-name {
+        width: 100%;
+        text-align: center;
+        margin-top: 12px;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .pill-card {
+        padding: 0 20px 0 40px;
+        /* Adjust padding for mobile */
+    }
+
+    .transformation-grid {
+        gap: 12px;
+        margin-top: 32px;
+    }
+
+    .icon-circle {
+        width: 48px;
+        height: 48px;
+        font-size: 1.25rem;
+        margin-right: 12px;
+    }
+
+    .card-text-container {
+        padding: 16px 20px;
+        font-size: 1rem;
+    }
+
+    .overview-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .premium-project-card {
+        padding: 0;
+    }
+
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 16px;
+        padding: 16px 20px;
+    }
+
+    .project-num {
+        margin-bottom: 16px;
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+    }
+
+    .project-name {
+        font-size: 1.5rem;
+    }
+
+    .pricing-premium-card .price-header {
+        padding: 40px 24px;
+    }
+
+    .pricing-premium-card .price-body,
+    .pricing-premium-card .price-footer {
+        padding: 32px 24px;
+    }
+
+    .price-big {
+        font-size: 1.5rem;
+    }
+
+    .check-list li {
+        font-size: 1rem;
+        margin-bottom: 16px;
+    }
+
+    .btn-large {
+        padding: 16px 32px;
+        font-size: 1.1rem;
+    }
+
+    .blob {
+        display: none;
+        /* Hide heavy blobs on mobile for performance and readability */
+    }
+
+    .faq-question {
+        padding: 20px;
+    }
+
+    .faq-question h3 {
+        font-size: 1.1rem;
+    }
+
+    .faq-answer {
+        padding: 0 20px;
+    }
+
+    .faq-answer p {
+        font-size: 1rem;
+    }
+}
