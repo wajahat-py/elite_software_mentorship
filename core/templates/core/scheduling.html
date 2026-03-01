@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Your Call - Elite Software Mentorship</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <style>
+        .scheduling-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px 40px;
+            text-align: center;
+        }
+
+        .scheduling-card {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-big);
+            padding: 40px 20px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            margin-top: 32px;
+        }
+    </style>
+</head>
+
+<body class="bg-main">
+
+    <!-- Very minimal glassmorphic nav -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="{% url 'index' %}" class="logo" style="text-decoration: none;">Elite Software Mentorship</a>
+        </div>
+    </nav>
+
+    <div class="scheduling-container">
+        <h2 class="section-title teal" style="margin-bottom: 16px; font-size: 2.2rem;">Application <span
+                class="purple">Received!</span></h2>
+
+        <p style="font-size: 1.1rem; line-height: 1.6; color: var(--text-dark);">
+            Please use the calendar below to instantly schedule your introductory call.
+        </p>
+
+        <div class="scheduling-card">
+            <!-- Calendly inline widget begin -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/wajahathassanbusiness/new-meeting"
+                style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <!-- Calendly inline widget end -->
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
 </head>
 
 <body>
@@ -18,8 +19,8 @@
     <!-- Very minimal glassmorphic nav -->
     <nav class="navbar">
         <div class="container nav-content">
-            <div class="logo">WAJAHAT HASSAN</div>
-            <a href="#apply" class="btn btn-primary btn-nav">Apply Now</a>
+            <div class="logo">Elite Software Mentorship</div>
+            <a href="{% url 'apply' %}" class="btn btn-primary btn-nav">Apply for Parent Call</a>
         </div>
     </nav>
 
@@ -35,7 +36,7 @@
                     class="highlight-text teal">AI-Powered</span> Web Application.
             </p>
             <div class="hero-cta">
-                <a href="#apply" class="btn btn-teal btn-large">Apply for the 12-Week Program</a>
+                <a href="{% url 'apply' %}" class="btn btn-teal btn-large">Apply for the 12-Week Mentorship</a>
             </div>
         </div>
     </header>
@@ -269,7 +270,7 @@
                             class="purple">Mentor</span></h2>
                     <div class="mentor-profile-card">
                         <div class="mentor-image-container">
-                            <img src="mentor.png" alt="Wajahat Hassan" class="mentor-image">
+                            <img src="{% static 'core/img/mentor.png' %}" alt="Wajahat Hassan" class="mentor-image">
                         </div>
                         <h3 class="highlight-text purple mentor-name">Wajahat Hassan</h3>
                     </div>
@@ -320,7 +321,7 @@
                     <div class="scarcity">
                         Limited enrollment — 5 slots remaining
                     </div>
-                    <a href="https://calendly.com" target="_blank" class="btn btn-teal btn-large full-width">Apply for
+                    <a href="{% url 'apply' %}" target="_blank" class="btn btn-teal btn-large full-width">Apply for
                         the 12-Week Mentorship</a>
                 </div>
             </div>
@@ -391,7 +392,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="{% static 'core/js/script.js' %}"></script>
 </body>
 
 </html>

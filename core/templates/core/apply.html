@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Mentorship - Elite Software Mentorship</title>
+    <!-- Using Poppins for a premium, rounded aesthetic matching the PDF -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <style>
+        .apply-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--teal);
+            font-weight: 500;
+            text-decoration: none;
+            margin-bottom: 32px;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        .back-link svg {
+            margin-right: 8px;
+        }
+
+        /* Premium Form Styles */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-control,
+        .form-select {
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: 2px solid #e1e1e1;
+            background-color: #fafafa;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--teal);
+            background-color: #fff;
+            box-shadow: 0 0 0 4px rgba(45, 156, 150, 0.1);
+        }
+
+        .form-application-card {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-big);
+            padding: 48px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .form-application-card {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-main">
+
+    <!-- Very minimal glassmorphic nav -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="{% url 'index' %}" class="logo" style="text-decoration: none;">Elite Software Mentorship</a>
+        </div>
+    </nav>
+
+    <div class="apply-container" style="margin-top: 80px;">
+        <a href="{% url 'index' %}" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Program
+        </a>
+
+        <div class="form-application-card">
+            <h2 class="section-title text-left teal" style="margin-bottom: 32px; font-size: 2.5rem;">Mentorship <span
+                    class="purple">Application</span></h2>
+
+            <form method="POST" action="{% url 'apply' %}">
+                {% csrf_token %}
+
+                {% for field in form %}
+                <div class="form-group">
+                    <label class="form-label" for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}<span style="color:var(--purple);">*</span>{% endif %}
+                    </label>
+                    {{ field }}
+                    {% if field.errors %}
+                    <div style="color: red; margin-top: 8px; font-size: 0.9rem;">
+                        {{ field.errors }}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+                <button type="submit" class="btn btn-teal btn-large full-width" style="margin-top: 24px;">Submit
+                    Application</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
