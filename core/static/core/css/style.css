@@ -733,6 +733,119 @@ h3 {
 }
 
 /* =========================================================================
+   6. Outcomes & Testimonials Section
+   ========================================================================= */
+.outcomes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+}
+
+.premium-list li {
+    font-size: 1.25rem;
+    padding-left: 48px;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+
+
+.testimonial-slider-container {
+    background: var(--teal);
+    border-radius: var(--radius-card);
+    padding: 40px;
+    color: white;
+    box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-slider {
+    position: relative;
+    min-height: 250px;
+}
+
+.testimonial-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    transform: translateX(20px);
+}
+
+.testimonial-slide.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    transform: translateX(0);
+}
+
+.testimonial-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-author {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 32px;
+}
+
+.slider-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.slider-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+.slider-dots {
+    display: flex;
+    gap: 12px;
+}
+
+.slider-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.slider-dots .dot.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+/* =========================================================================
    8. Mentor
    ========================================================================= */
 .mentor-premium-box {
@@ -1084,6 +1197,7 @@ h3 {
 
     .transformation-grid,
     .problem-split,
+    .outcomes-grid,
     .mentor-premium-box {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -1260,6 +1374,29 @@ h3 {
     .check-list li {
         font-size: 1rem;
         margin-bottom: 16px;
+    }
+
+    .premium-list li {
+        padding-left: 40px;
+    }
+
+    .premium-list li::before {
+        width: 24px;
+        height: 24px;
+        box-shadow: inset 0 0 0 5px #fff, 0 0 0 2px var(--green-bright);
+    }
+
+    .testimonial-slider-container {
+        padding: 32px 24px;
+    }
+
+    .testimonial-text {
+        font-size: 1.1rem;
+    }
+
+    .slider-btn {
+        width: 40px;
+        height: 40px;
     }
 
     .btn-large {
