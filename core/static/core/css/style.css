@@ -262,6 +262,12 @@ h3 {
     height: 64px;
 }
 
+.nav-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
 .logo {
     font-weight: 700;
     color: var(--text-hero);
@@ -1130,11 +1136,38 @@ h3 {
         padding: 80px 0;
     }
 
-    .hero,
+    .hero {
+        min-height: 100dvh;
+        padding-top: 140px;
+        padding-bottom: 0px;
+    }
+
     .transformation {
         min-height: 100dvh;
         padding-top: 64px;
         padding-bottom: 0px;
+    }
+
+    .navbar {
+        padding-top: 16px;
+    }
+
+    .nav-content {
+        height: auto;
+        flex-direction: column;
+        padding: 16px 0 24px;
+        gap: 20px;
+    }
+
+    .nav-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .nav-actions .btn {
+        width: 100%;
+        text-align: center;
     }
 
     .mentor-image-container {
@@ -1241,17 +1274,29 @@ h3 {
 
     .faq-question {
         padding: 20px;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .faq-icon {
+        flex-shrink: 0;
+        margin-top: 4px;
     }
 
     .faq-question h3 {
         font-size: 1.1rem;
-    }
-
-    .faq-answer {
-        padding: 0 20px;
+        line-height: 1.4;
     }
 
     .faq-answer p {
         font-size: 1rem;
+    }
+
+    .footer .highlight-text,
+    a[href^="mailto:"] {
+        word-break: break-all;
+        overflow-wrap: break-word;
+        font-size: 0.95rem;
+        /* Smaller size to fit long emails cleanly */
     }
 }
