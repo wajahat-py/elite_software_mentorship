@@ -26,8 +26,8 @@ SECRET_KEY = 'django-insecure-zhmce$x$m7@-9c*la4fx=h1#)3-o^#nz(5!1o@t363pki!em)p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'elitesoftwarementorship.com']
-
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '52.63.161.100', 'elitesoftwarementorship.com', 'www.elitesoftwarementorship.com']
+CSRF_TRUSTED_ORIGINS = ['https://elitesoftwarementorship.com', 'https://www.elitesoftwarementorship.com']
 
 # Application definition
 
