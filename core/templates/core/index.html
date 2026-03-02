@@ -20,7 +20,11 @@
     <nav class="navbar">
         <div class="container nav-content">
             <div class="logo">Elite Software Mentorship</div>
-            <a href="{% url 'apply' %}" class="btn btn-primary btn-nav">Apply for Parent Call</a>
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <a href="{% static 'core/files/elite_software_mentorship_program.pdf' %}" download target="_blank"
+                    class="btn btn-nav btn-outline-text">Download PDF</a>
+                <a href="{% url 'apply' %}" class="btn btn-primary btn-nav">Apply for Parent Call</a>
+            </div>
         </div>
     </nav>
 
@@ -35,8 +39,10 @@
                     class="highlight-text purple">3 Real Projects</span> — Including an <span
                     class="highlight-text teal">AI-Powered</span> Web Application.
             </p>
-            <div class="hero-cta">
+            <div class="hero-cta" style="display: flex; gap: 16px; flex-wrap: wrap;">
                 <a href="{% url 'apply' %}" class="btn btn-teal btn-large">Apply for the 12-Week Mentorship</a>
+                <a href="{% static 'core/files/elite_software_mentorship_program.pdf' %}" download target="_blank"
+                    class="btn btn-large btn-outline-teal">Download Program PDF</a>
             </div>
         </div>
     </header>
@@ -386,9 +392,16 @@
         </div>
     </section>
 
-    <footer class="footer text-center">
+    <footer class="footer text-center"
+        style="padding: 40px 0; background-color: var(--bg-main); border-top: 1px solid var(--border-subtle);">
         <div class="container">
-            <p>© 2026. All rights reserved.</p>
+            <div style="margin-bottom: 24px;">
+                <p style="font-weight: 600; margin-bottom: 8px;">Direct Inquiries</p>
+                <a href="mailto:admissions@elitesoftwarementorship.com" class="highlight-text teal"
+                    style="text-decoration: none;">admissions@elitesoftwarementorship.com</a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">© 2026 Elite Software Mentorship. All rights
+                reserved.</p>
         </div>
     </footer>
 
